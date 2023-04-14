@@ -7,6 +7,7 @@ import axios from "axios";
 export default function Home() {
   const [language, setLanguage] = useState<string | null>(null);
   const [text, setText] = useState("");
+  const [result, setResult] = useState("");
   return (
     <>
       <Head>
@@ -33,14 +34,14 @@ export default function Home() {
 
         <button
           style={{display: "block"}}
+          className={styles.translateButton}
           onClick={() => {
-            console.log("Sending request to OpenAI...")
             axios.post("/api/translate", {
               language: language,
               text: text,
             }).then((r) => {
               console.log(r);
-              alert(r.data.result);
+              setResult(r.data.result.trim());
             }).catch((e) => {
               console.log(e);
             });
@@ -48,6 +49,15 @@ export default function Home() {
         >
           Translate
         </button>
+
+        <textarea
+          className={styles.result}
+          readOnly
+          value={result}
+          rows={8}
+          cols={80}
+        />
+
       </main>
     </>
   )
