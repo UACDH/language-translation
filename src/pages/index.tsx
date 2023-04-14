@@ -36,6 +36,14 @@ export default function Home() {
           style={{display: "block"}}
           className={styles.translateButton}
           onClick={() => {
+            if (text.length === 0) {
+              alert("Please enter some text to translate.");
+              return;
+            } else if (language === null) {
+              alert("Please select a language.");
+              return;
+            }
+
             axios.post("/api/translate", {
               language: language,
               text: text,
