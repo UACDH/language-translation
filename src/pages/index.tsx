@@ -39,13 +39,10 @@ export default function Home() {
             if (text.length === 0) {
               alert("Please enter some text to translate.");
               return;
-            } else if (language === null) {
-              alert("Please select a language.");
-              return;
             }
 
             axios.post("/api/translate", {
-              language: language,
+              language: language ?? "English",
               text: text,
             }).then((r) => {
               console.log(r);
