@@ -1,10 +1,17 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  padding: 2rem;
   min-height: 100vh;
+}
+
+.textEntry {
+  outline: none;
+  padding: 5px;
+  font-size: large;
+  resize: none;
 }
 
 .description {
